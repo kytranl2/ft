@@ -1,3 +1,6 @@
+import datetime
+
+
 def read_last_data(filename):
     """Read the last recorded data from the file."""
     with open(filename, 'r') as file:
@@ -18,7 +21,7 @@ filename = 'market_cap_data.txt'
 last_date, last_market_cap = read_last_data(filename)
 
 if last_market_cap:
-    differences = {company: stockDict.get(company, 0) - last_market_cap.get(company, 0) for company in stockDict}
+    differences = {company: int(stockDict.get(company, 0)) - last_market_cap for company in stockDict}
     print(f"Differences from {last_date}: {differences}")
 
 # Write current data to file with date
